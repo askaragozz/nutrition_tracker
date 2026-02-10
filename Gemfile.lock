@@ -276,6 +276,8 @@ GEM
       rubocop (~> 1.81)
     ruby-progressbar (1.13.0)
     securerandom (0.4.1)
+    shoulda-matchers (6.5.0)
+      activesupport (>= 5.2.0)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
       logger
@@ -330,6 +332,7 @@ DEPENDENCIES
   rspec-rails
   rubocop
   rubocop-rspec
+  shoulda-matchers (~> 6.0)
   sprockets-rails
   stimulus-rails
   turbo-rails

@@ -55,6 +55,10 @@ group :development, :test do
   gem "dotenv-rails"
 end
 
+group :test do
+  gem 'shoulda-matchers', '~> 6.0'
+end
+
 
 group :development do
   gem "rubocop", require: false
