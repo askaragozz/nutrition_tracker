@@ -7,10 +7,21 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= javascript_importmap_tags %>
+
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container mt-4" style="max-width: 80%;">
+      <%= render "shared/navbar" %>
+
+      <% flash.each do |type, message| %>
+        ...
+      <% end %>
+
+      <%= yield %>
+    </div>
   </body>
+
 </html>

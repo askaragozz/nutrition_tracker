@@ -7,4 +7,11 @@ class Food < ApplicationRecord
           numericality: { greater_than_or_equal_to: 0 }
 
 
+    def kcal
+        calories
+    end
+
+    def kj
+        calories * 4.184
+    end
 end
