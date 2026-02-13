@@ -1,0 +1,22 @@
+<div class="card col-lg-8 mb-3">
+  <h3 class="card-header">Foods</h3>
+</div>
+
+<%= turbo_frame_tag "category_list" do %>
+  <div class="row col-lg-8 mb-3">
+    <% @categories.each do |category| %>
+      <div class="col-lg-6 mb-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5><%= link_to category.name, category_path(category) %></h5>
+            <% category.food_items.limit(10).each do |food_item| %>
+              <span><%= "#{food_item.name}, " %></span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @categories.empty? %><p>No categories found.</p><% end %>
+<% end %>

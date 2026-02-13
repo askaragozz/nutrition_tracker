@@ -23,18 +23,19 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_10_130944) do
 
   create_table "food_entries", force: :cascade do |t|
     t.bigint "meal_id", null: false
-    t.bigint "food_id", null: false
+    t.bigint "food_item_id", null: false
     t.decimal "quantity", precision: 10, scale: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["food_id"], name: "index_food_entries_on_food_id"
-    t.index ["meal_id", "food_id"], name: "index_food_entries_on_meal_id_and_food_id", unique: true
+    t.index ["food_item_id"], name: "index_food_entries_on_food_item_id"
+    t.index ["meal_id", "food_item_id"], name: "index_food_entries_on_meal_id_and_food_item_id", unique: true
     t.index ["meal_id"], name: "index_food_entries_on_meal_id"
     t.check_constraint "quantity > 0::numeric", name: "food_entries_quantity_positive"
   end
 
-  create_table "foods", force: :cascade do |t|
+  create_table "food_items", force: :cascade do |t|
     t.string "name", null: false
+    t.text "description"
     t.decimal "calories", precision: 10, scale: 2, null: false
     t.decimal "protein", precision: 10, scale: 2, null: false
     t.decimal "carbs", precision: 10, scale: 2, null: false
@@ -42,8 +43,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_10_130944) do
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_foods_on_category_id"
-    t.index ["name"], name: "index_foods_on_name"
+    t.index ["category_id"], name: "index_food_items_on_category_id"
+    t.index ["name"], name: "index_food_items_on_name"
   end
 
   create_table "meals", force: :cascade do |t|
@@ -64,8 +65,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_10_130944) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "food_entries", "foods"
+  add_foreign_key "food_entries", "food_items"
   add_foreign_key "food_entries", "meals"
-  add_foreign_key "foods", "categories"
+  add_foreign_key "food_items", "categories"
   add_foreign_key "meals", "users"
 end

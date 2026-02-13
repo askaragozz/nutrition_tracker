@@ -1,0 +1,6 @@
+<h5><%= "Related with #{title}:" %></h5>
+<% similar_food_items.each do |food| %>
+    <span>
+        <%= link_to food.name, food_item_path(food), class: "text-decoration-none" %>
+    </span>
+<% end %>

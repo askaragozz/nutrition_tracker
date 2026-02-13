@@ -1,0 +1,22 @@
+<div class="col-lg-8">
+  <div class="row">
+    <%= render "header", title: food_item.name %>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-lg-5">
+      <%= render "value_box", food: food_item %>
+    </div>
+
+    <div class="col-lg-7">
+      <div class="row mb-3">
+        <%= render "value_sum", food: food_item %>
+        <%= render "similar_food_items",
+                  title: food_item.name,
+                  similar_food_items: food_item.similar_food_items %>
+
+      </div>
+    </div>
+  </div>
+
+</div>

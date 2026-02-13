@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  root "foods#index"
+  root "food_items#index"
 
-  resources :foods
+  resources :food_items
+  resources :categories, only: [:index, :show]
 
 end
