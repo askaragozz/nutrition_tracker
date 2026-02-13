@@ -1,0 +1,16 @@
+<%= form_with url: food_items_path,
+              method: :get,
+              local: false,
+              data: { turbo_frame: "foods_list" },
+              html: { class: "d-flex", role: "search" } do |f| %>
+
+  <%= f.text_field :q,
+        value: query,
+        placeholder: "Search foods...",
+        class: "form-control me-2",
+        aria: { label: "Search" } %>
+
+  <%= f.submit "Search",
+        class: "btn btn-outline-success" %>
+
+<% end %>
